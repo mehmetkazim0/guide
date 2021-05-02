@@ -30,7 +30,7 @@ const config = {
 		lastUpdated: true,
 		nav: [
 			{
-				text: 'Home',
+				text: 'Ev',
 				link: '/',
 			},
 			{
@@ -38,7 +38,7 @@ const config = {
 				link: '/commando/',
 			},
 			{
-				text: 'Discord.js Documentation',
+				text: 'Discord.js Dokümantasyon',
 				link: 'https://discord.js.org/#/docs/main/stable/general/welcome',
 			},
 		],
