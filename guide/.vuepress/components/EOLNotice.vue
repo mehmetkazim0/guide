@@ -1,12 +1,12 @@
 <template>
 	<div v-if="showNotice" class="eol-notice">
-		We no longer provide support, maintain bug fixes or new features for version 11 of discord.js. Please
+		Discord.js'nin 11. sürümü için artık destek sağlamıyoruz, hata düzeltmeleri yapmıyoruz veya yeni özellikler sunmuyoruz. Lütfen
 		<router-link to="/additional-info/changes-in-v12.html">
-			update your bot to version 12
+			botunuzu sürüm 12'ye güncelleyin
 		</router-link>
-		at your earliest convenience.
+		uygun olan en erken zamanda.
 		<br />
-		We expect version 11 to die for good around the start of 2021 due to discord introducing breaking changes.  <a href="#" @click.prevent="dismiss">[Dismiss for 1 week]</a>
+		Değişikliklerin ortaya çıkmasına neden olan uyuşmazlıklar nedeniyle 11 sürümünün 2021 başlarında tamamen sona ermesini bekliyoruz.  <a href="#" @click.prevent="dismiss">[1 haftalığına işten çıkar]</a>
 	</div>
 </template>
 
