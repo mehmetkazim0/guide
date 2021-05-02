@@ -1,9 +1,9 @@
 <template>
 	<p>
-		If you want to compare your code to the code we've constructed so far, you can review it over on the GitHub repository
+		Kodunuzu şimdiye kadar oluşturduğumuz kodla karşılaştırmak isterseniz, 
 		<a :href="githubLink" target="_blank" rel="noopener noreferrer">
-			here <outbound-link />
-		</a>.
+			buradan <outbound-link />
+		</a> GitHub deposunda inceleyebilirsiniz..
 	</p>
 </template>
 
