@@ -11,7 +11,7 @@ It is crucial that you first understand two details about audit logs:
 2) There is no event which triggers when an audit log is created.
 :::
 
-Let us start by glancing at the `fetchAuditLogs` method and how we want to work with it. Like many djs methods, it returns a Promise containing what we want–the GuildAuditLogs object. In most cases, only the `entries` property will be of interest, as it holds a collection of GuildAuditLogsEntry objects, and consequently, the information we usually want. You can always take a look at the options [in the djs docs](https://discord.js.org/#/docs/main/stable/class/Guild?scrollTo=fetchAuditLogs).
+Let us start by glancing at the `fetchAuditLogs` method and how we want to work with it. Like many discord.js methods, it returns a Promise containing what we want–the GuildAuditLogs object. In most cases, only the `entries` property will be of interest, as it holds a collection of GuildAuditLogsEntry objects, and consequently, the information we usually want. You can always take a look at the options <docs-link path="class/Guild?scrollTo=fetchAuditLogs">in the discord.js docs</docs-link>.
 
 The following examples will explore a straightforward case for some auditLog types. Some basic error handling is performed, but these code segments are by no means foolproof and are meant to teach you how fetching audit logs work. You will most likely need to expand on the examples based on your own goals for a rigorous system.
 
@@ -22,21 +22,12 @@ Let us dive right into it with probably the most common use of audit logs, under
 At the time of writing, Discord does not emit an audit log if the person who deleted the message is a bot deleting a single message or is the author of the message itself.
 :::
 
-For now, we will look only at the `messageDelete` event. Let us start with defining a basic trial code for this task.
+For now, we will look only at the `messageDelete` event.
 
 ```js
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
-client.once('ready', () => {
-	console.log('Ready!');
-});
-
 client.on('messageDelete', message => {
 	console.log(`A message by ${message.author.tag} was deleted, but we don't know by who yet.`);
 });
-
-client.login('your-token-goes-here');
 ```
 
 So far, nothing should seem new or complicated. We get the message deleted event and log that a message was removed from a channel. We could use more information from the message object, but that is left as an exercise for the reader.
@@ -45,9 +36,9 @@ For our interests, we will set a fetch limit of 1 and only care about the type `
 
 Placing this into the previous code, we get the following. Note that we will also make the function async to make use of `await`. As well, we will make sure to ignore DMs.
 
-```js
+```js {2-9,11-12,14-16,18-25}
 client.on('messageDelete', async message => {
-	// ignore direct messages
+	// Ignore direct messages
 	if (!message.guild) return;
 	const fetchedLogs = await message.guild.fetchAuditLogs({
 		limit: 1,
@@ -63,7 +54,6 @@ client.on('messageDelete', async message => {
 	// Let us also grab the target of this action to double-check things
 	const { executor, target } = deletionLog;
 
-
 	// And now we can update our output with a bit more information
 	// We will also run a check to make sure the log we got was for the same author's message
 	if (target.id === message.author.id) {
@@ -78,26 +68,17 @@ With this, we now have a very simple logger telling us who deleted a message aut
 
 ## Who kicked a user?
 
-Similar to the `messageDelete` case, we will start with a bare-bones bot looking, this time, at the `guildMemberRemove` event.
+Similar to the `messageDelete` case, let's look at the `guildMemberRemove` event.
 
 ```js
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
-client.once('ready', () => {
-	console.log('Ready!');
-});
-
 client.on('guildMemberRemove', member => {
 	console.log(`${member.user.tag} left the guild... but was it of their own free will?`);
 });
-
-client.login('your-token-goes-here');
 ```
 
 We will again fetch audit logs while limiting ourselves to 1 entry and looking at the `MEMBER_KICK` type.
 
-```js
+```js {2-7,9-10,12-14,16-22}
 client.on('guildMemberRemove', async member => {
 	const fetchedLogs = await member.guild.fetchAuditLogs({
 		limit: 1,
@@ -125,26 +106,17 @@ client.on('guildMemberRemove', async member => {
 
 ## Who banned a user?
 
-The logic for this will be very similar to the above kick example, except that this time we have an event specifically for guild bans, that is `guildBanAdd`. Starting with a skeleton code, we have the following.
+The logic for this will be very similar to the above kick example, except that this time we have an event specifically for guild bans, that is `guildBanAdd`.
 
 ```js
-const Discord = require('discord.js');
-const client = new Discord.Client();
-
-client.once('ready', () => {
-	console.log('Ready!');
-});
-
 client.on('guildBanAdd', async (guild, user) => {
 	console.log(`${user.tag} got hit with the swift hammer of justice in the guild ${guild.name}.`);
 });
-
-client.login('your-token-goes-here');
 ```
 
 As was the case in the previous examples, we can see what happened, to whom it happened, but not who executed the action. Enter once again audit logs to limit ourselves to 1 entry and look at the `MEMBER_BAN_ADD` type. Our `guildBanAdd` listener then becomes.
 
-```js
+```js {2-7,9-10,12-14,16-22}
 client.on('guildBanAdd', async (guild, user) => {
 	const fetchedLogs = await guild.fetchAuditLogs({
 		limit: 1,
