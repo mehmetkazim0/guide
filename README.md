@@ -27,4 +27,8 @@ Kılavuza katkıda bulunmakla ilgileniyorsanız, [GitHub Projeleri](https://gith
 
 Eğer bu türkçe kılavuza destek vermek isterseniz [bu](https://github.com/mehmetkazim0/discord-turkce-kilavuz) adresten yazabilirsiniz.
 
+
 Soru ve sorunlarınız için de bana yazmayı unutmayın :) .
+
+
+Bu proje https://github.com/discordjs/guide 742 commits de iken yapılmaya başlandı.
