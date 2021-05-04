@@ -1,8 +1,8 @@
-# Contributing
+# Katkı
 
-## Local development
+## Yerel Geliştirme
 
-Clone the repo into your desired folder, `cd` into it, and install the dependencies.
+Depoyu istediğiniz klasöre, `cd` ye klonlayın ve bağımlılıkları kurun.
 
 ```bash
 git clone https://github.com/discordjs/guide.git
@@ -10,19 +10,20 @@ cd guide
 npm install
 ```
 
-You can use `npm run serve` to open up a local version of the site at http://localhost:8080. If you need to use a different port, run it as `npm run serve -- --port=1234`.
+http://localhost:8080 adresinde sitenin yerel bir sürümünü açmak için `npm run serve` yi kullanabilirsiniz. Farklı bir bağlantı noktası kullanmanız gerekiyorsa, bunu `npm run serve -- --port=1234` olarak çalıştırın.
+
 
 ### Linting
 
-Remember to always lint your edits/additions before making a commit to ensure everything's lined up and consistent with the rest of the guide. We use ESLint and have a package.json script for linting both JS files and JS codeblocks inside Markdown files.
+Her şeyin aynı hizada olduğundan ve kılavuzun geri kalanıyla tutarlı olduğundan emin olmak için bir taahhütte bulunmadan önce her zaman düzenlemelerinizi / eklemelerinizi bırakmayı unutmayın. ESLint kullanıyoruz ve Markdown dosyalarının içinde hem JS dosyalarını hem de JS kod bloklarını lintlemek için bir package.json betiğimiz var.
 
 ```bash
 npm run lint
 ```
 
-#### Caveats
+#### Uyarılar
 
-There might come a time where a snippet will contain a parsing error, and ESLint won't be able to lint it properly. For example:
+Bir kod parçacığının bir ayrıştırma hatası içereceği bir zaman gelebilir ve ESLint onu düzgün bir şekilde lint bırakamaz. Örneğin:
 
 <!-- eslint-skip -->
 
@@ -31,31 +32,32 @@ const sent = await message.channel.send('Hi!');
 console.log(sent.content)
 ```
 
-ESLint would error with `Parsing error: Unexpected token message` instead of letting you know that you're missing a semicolon. In this case, it's because of the use of `await` outside of an async function. In situations like this, after you've fixed any obvious errors, you can add an `<!-- eslint-skip -->` comment above the codeblock to have it ignored entirely by ESLint when running the lint script.
+ESLint, noktalı virgülün eksik olduğunu bildirmek yerine `Parsing error: Unexpected token message` yani `Ayrıştırma hatası: Beklenmeyen belirteç mesajı` ile hata verir. Bu durumda, zaman uyumsuz bir işlevin dışında `await` seçeneğinin kullanılması nedeniyledir. Bu gibi durumlarda, bariz hataları düzelttikten sonra, lint betiğini çalıştırırken ESLint tarafından tamamen yok sayılması için kod bloğunun üstüne bir `<!-- eslint-skip -->` yorumu ekleyebilirsiniz.
 
-## Adding pages
 
-To add a new page to the guide, create a `file-name.md` file inside the folder of your choice. If you want to link to `/dir/some-tutorial.html`, you would create a `some-tutorial.md` file inside a `dir` folder. [VuePress](https://github.com/vuejs/vuepress) will pick up on it and set up the routing appropriately.
+## Sayfa ekleme
 
-With that being said, you will still need to add the link to the sidebar manually. Go to the `/guide/.vuepress/sidebar.js` file and insert a new item with the path to your newly created page.
+Kılavuza yeni bir sayfa eklemek için, seçtiğiniz klasörün içinde bir `dosya-adı.md` dosyası oluşturun. `/dir/some-tutorial.html` 'ye bağlanmak istiyorsanız, bir `dir` klasörü içinde bir `some-tutorial.md` dosyası oluşturursunuz. [VuePress](https://github.com/vuejs/vuepress) onu alacak ve yönlendirmeyi uygun şekilde ayarlayacaktır.
 
-## General guidelines
+Bununla birlikte, bağlantıyı kenar çubuğuna manuel olarak eklemeniz gerekecektir. `/guide/.vuepress/sidebar.js` dosyasına gidin ve yeni oluşturulan sayfanızın yolunu içeren yeni bir öğe ekleyin.
 
-Because we want to keep everything as consistent and clean as possible, here are some guidelines we strongly recommend you try to follow when making a contribution.
+## Genel kurallar
 
-### Spelling, grammar, and wording
+Her şeyi olabildiğince tutarlı ve temiz tutmak istediğimiz için, katkıda bulunurken izlemenizi şiddetle tavsiye ettiğimiz bazı yönergeler aşağıda verilmiştir.
 
-Improper grammar, strange wording, and incorrect spelling are all things that may lead to confusion when a user reads a guide page. It's important to attempt to keep the content clear and consistent. Re-read what you've written and place yourself in the shoes of someone else for a moment to see if you can fully understand everything without any confusion.
+### Yazım, dilbilgisi ve ifade
 
-Don't worry if you aren't super confident with your grammar/spelling/wording skills; all pull requests get thoroughly reviewed, and comments are left in areas that need to be fixed or could be done better/differently.
+Yanlış dilbilgisi, garip ifadeler ve yanlış yazım, bir kullanıcı bir kılavuz sayfasını okuduğunda kafa karışıklığına yol açabilecek şeylerdir. İçeriği net ve tutarlı tutmaya çalışmak önemlidir. Herhangi bir kafa karışıklığı olmadan her şeyi tam olarak anlayıp anlayamayacağınızı görmek için yazdıklarınızı tekrar okuyun ve bir an için kendinizi başka birinin yerine koyun.
 
-#### "You"/"your" instead of "we"/"our"
+Dilbilgisi / yazım / ifade becerilerinize çok güvenmiyorsanız endişelenmeyin; tüm çekme talepleri kapsamlı bir şekilde incelenir ve yorumlar düzeltilmesi gereken veya daha iyi / farklı yapılabilecek alanlarda bırakılır.
 
-When explaining parts of a guide, it's recommended to use "you" instead of "we" in most situations. For example:
+#### "Biz" / "bizim" yerine "Siz" / "sizin"
+
+Bir kılavuzun bölümlerini açıklarken, çoğu durumda "biz" yerine "siz" i kullanmanız önerilir. Örneğin:
 
 ```diff
-- To check our Node version, we can run `node -v`.
-+ To check your Node version, you can run `node -v`.
+- Düğüm sürümümüzü kontrol etmek için, `node -v` komutunu çalıştırabiliriz..
++ Düğüm sürümünüzü kontrol etmek için, `node -v` komutunu çalıştırabilirsiniz..
 
 - To delete a message, we can do: `message.delete();`
 + To delete a message, you can do: `message.delete();`
