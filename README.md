@@ -31,4 +31,4 @@ Eğer bu türkçe kılavuza destek vermek isterseniz [bu](https://github.com/meh
 Soru ve sorunlarınız için de bana yazmayı unutmayın :) .
 
 
-Bu proje https://github.com/discordjs/guide 742 commits de iken yapılmaya başlandı.
+Bu proje https://github.com/discordjs/guide 749 commits de iken yapılmaya başlandı.
