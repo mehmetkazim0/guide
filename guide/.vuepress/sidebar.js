@@ -67,7 +67,6 @@ module.exports = {
 			title: 'Komut İşleyici',
 			children: [
 				'/command-handling/',
-				'/command-handling/dynamic-commands',
 				'/command-handling/adding-features',
 			],
 		},
