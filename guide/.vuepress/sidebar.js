@@ -1,21 +1,21 @@
 module.exports = {
 	'/commando/': [
 		{
-			title: 'Ev',
+			title: 'Home',
 			children: [
 				'/',
 				'/requesting-more-content',
 			],
 		},
 		{
-			title: 'Başlarken',
+			title: 'Getting Started',
 			children: [
 				'/commando/',
 				'/commando/first-command',
 			],
 		},
 		{
-			title: 'Ekstra Komut Bilgisi',
+			title: 'Extra Command Info',
 			children: [
 				'/commando/throttling',
 				'/commando/guild-only',
@@ -23,14 +23,14 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Argümanlar',
+			title: 'Arguments',
 			children: [
 				'/commando/args',
 				'/commando/validators',
 			],
 		},
 		{
-			title: 'Ek Bilgiler',
+			title: 'Additional Information',
 			children: [
 				'/commando/client-values',
 				'/commando/unknown-command-response',
@@ -39,14 +39,14 @@ module.exports = {
 	],
 	'/': [
 		{
-			title: 'Ev',
+			title: 'Home',
 			children: [
 				'/',
 				'requesting-more-content',
 			],
 		},
 		{
-			title: 'Kurulumlar ve Hazırlıklar',
+			title: 'Installations & Preparations',
 			children: [
 				'/preparations/',
 				'/preparations/setting-up-a-linter',
@@ -55,7 +55,7 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Botunuzu Oluşturmak',
+			title: 'Creating Your Bot',
 			children: [
 				'/creating-your-bot/',
 				'/creating-your-bot/configuration-files',
@@ -64,21 +64,20 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Komut İşleyici',
+			title: 'Command Handler',
 			children: [
 				'/command-handling/',
-				'/command-handling/dynamic-commands',
 				'/command-handling/adding-features',
 			],
 		},
 		{
-			title: 'Olay işleyicisi',
+			title: 'Event Handler',
 			children: [
 				'/event-handling/',
 			],
 		},
 		{
-			title: 'Popüler Konular',
+			title: 'Popular Topics',
 			children: [
 				'/popular-topics/faq',
 				'/popular-topics/embeds',
@@ -95,14 +94,14 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Çeşitli',
+			title: 'Miscellaneous',
 			children: [
 				'/miscellaneous/parsing-mention-arguments',
 				'/miscellaneous/useful-packages',
 			],
 		},
 		{
-			title: 'Veritabanları',
+			title: 'Databases',
 			children: [
 				'/sequelize/',
 				'/sequelize/currency',
@@ -110,7 +109,7 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Parçalama',
+			title: 'Sharding',
 			children: [
 				'/sharding/',
 				'/sharding/additional-information',
@@ -124,7 +123,7 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Ses',
+			title: 'Voice',
 			children: [
 				'/voice/',
 				'/voice/understanding-voice',
@@ -135,14 +134,14 @@ module.exports = {
 			],
 		},
 		{
-			title: 'Geliştirme Ortamınızı İyileştirme',
+			title: 'Improving Your Dev Environment',
 			children: [
 				'/improving-dev-environment/pm2',
 				'/improving-dev-environment/package-json-scripts',
 			],
 		},
 		{
-			title: 'Ek Bilgiler',
+			title: 'Additional Information',
 			children: [
 				'/additional-info/notation',
 				'/additional-info/es6-syntax',
